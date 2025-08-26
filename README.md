@@ -116,7 +116,7 @@ def limit_image_memory(path, max_file_size, delta=0.05, step_limit=10):
 ## Repository Structure
 
 ```
-Binary-Photo-Classifier-and-Resizer/
+Binary-Photo-Classifier-and-File-Compressor/
 ├── binary_classifier_photo_sign.ipynb  # Main implementation notebook
 ├── Dataset/                            # Training and testing data
 │   ├── train/
@@ -248,8 +248,8 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ### Development Setup
 ```bash
-git clone https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer.git
-cd Binary-Photo-Classifier-and-Resizer
+git clone https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor.git
+cd Binary-Photo-Classifier-and-File-Compressor
 pip install -r requirements.txt
 jupyter notebook binary_classifier_photo_sign.ipynb
 ```

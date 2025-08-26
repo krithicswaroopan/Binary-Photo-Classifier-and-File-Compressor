@@ -38,8 +38,8 @@ Include in bug reports:
 
 ### Development Setup
 ```bash
-git clone https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer.git
-cd Binary-Photo-Classifier-and-Resizer
+git clone https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor.git
+cd Binary-Photo-Classifier-and-File-Compressor
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt

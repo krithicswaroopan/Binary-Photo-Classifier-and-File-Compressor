@@ -1,6 +1,6 @@
 # Examples Directory
 
-This directory will contain practical examples and usage scripts for the Binary Photo Classifier and Resizer project.
+This directory will contain practical examples and usage scripts for the Binary Photo Classifier and File Compressor project.
 
 ## 🎯 Planned Examples
 

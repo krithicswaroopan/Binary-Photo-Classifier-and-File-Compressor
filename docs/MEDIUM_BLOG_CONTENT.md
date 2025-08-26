@@ -2,7 +2,7 @@
 
 This document contains the ready-to-use content for two Medium blog posts with all relevant code snippets and direct repository links.
 
-**Repository**: https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer
+**Repository**: https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor
 
 ---
 
@@ -11,7 +11,7 @@ This document contains the ready-to-use content for two Medium blog posts with a
 ### Opening Hook
 What if I told you that with just 30 training images, you could build an AI system that distinguishes photos from signatures with over 92% accuracy? Here's how I did it using TensorFlow and a carefully designed CNN architecture.
 
-**Full implementation available**: [View Jupyter Notebook](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/binary_classifier_photo_sign.ipynb)
+**Full implementation available**: [View Jupyter Notebook](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/binary_classifier_photo_sign.ipynb)
 
 ### The Problem
 Document processing is everywhere - from banking to legal services, organizations need to automatically distinguish between photos and signatures in scanned forms. Manual sorting is time-consuming and error-prone, but traditional image processing falls short when dealing with similar visual characteristics.
@@ -58,7 +58,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 ```
 
-**See full dataset structure**: [Dataset folder](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/tree/main/Dataset)
+**See full dataset structure**: [Dataset folder](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/tree/main/Dataset)
 
 ### Data Preparation
 
@@ -80,7 +80,7 @@ test_dataset = test.flow_from_directory("Dataset/test",
                                           class_mode='binary')
 ```
 
-**Dataset Structure** ([View in repo](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/tree/main/Dataset)):
+**Dataset Structure** ([View in repo](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/tree/main/Dataset)):
 - `train/photo/`: 16 training photos
 - `train/sign/`: 14 training signatures  
 - `test/photo/`: 6 test photos
@@ -101,7 +101,7 @@ model.fit_generator(train_dataset,
 - **Validation Accuracy**: 92.31%
 - **Training Time**: ~10 seconds for 10 epochs
 
-**View training results visualization**: [Training Results](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/assets/trainingresults.png)
+**View training results visualization**: [Training Results](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/assets/trainingresults.png)
 
 ### Making Predictions
 
@@ -127,8 +127,8 @@ def predictImage(filename):
 ```
 
 **See prediction examples**: 
-- [Photo Classification](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/assets/predict_photo.png)
-- [Signature Classification](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/assets/predict_sign.png)
+- [Photo Classification](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/assets/predict_photo.png)
+- [Signature Classification](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/assets/predict_sign.png)
 
 ### Key Insights
 1. **Small datasets can work**: 30 images achieved 92%+ accuracy
@@ -136,11 +136,11 @@ def predictImage(filename):
 3. **Preprocessing is crucial**: Simple rescaling (1/255) was sufficient
 
 ### Try It Yourself
-1. **Clone the repository**: `git clone https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer.git`
+1. **Clone the repository**: `git clone https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor.git`
 2. **Install dependencies**: `pip install -r requirements.txt`
 3. **Run the notebook**: `jupyter notebook binary_classifier_photo_sign.ipynb`
 
-**Full code and documentation**: [GitHub Repository](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer)
+**Full code and documentation**: [GitHub Repository](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor)
 
 ---
 
@@ -149,7 +149,7 @@ def predictImage(filename):
 ### The Problem
 Your beautiful high-resolution images are killing your website's performance. Traditional compression either destroys quality or doesn't reduce file size enough. Here's how I built an intelligent algorithm that reduces file size by 85% while preserving visual quality.
 
-**Complete implementation**: [View on GitHub](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/binary_classifier_photo_sign.ipynb)
+**Complete implementation**: [View on GitHub](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/binary_classifier_photo_sign.ipynb)
 
 ### The Smart Approach
 
@@ -248,7 +248,7 @@ optimized_path = limit_image_memory(image_location, max_file_size=190000, delta=
 #     - Time: 0.429 seconds
 ```
 
-**See the actual results**: [File Size Reduction Output](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/assets/rezise_output.png)
+**See the actual results**: [File Size Reduction Output](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/assets/rezise_output.png)
 
 ### Key Algorithm Benefits
 
@@ -265,7 +265,7 @@ optimized_path = limit_image_memory(image_location, max_file_size=190000, delta=
 
 ### Implementation Guide
 
-**Prerequisites** ([requirements.txt](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/requirements.txt)):
+**Prerequisites** ([requirements.txt](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/requirements.txt)):
 ```bash
 opencv-python>=4.5.0
 Pillow>=8.3.0
@@ -274,8 +274,8 @@ numpy>=1.21.0
 
 **Quick Start**:
 ```bash
-git clone https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer.git
-cd Binary-Photo-Classifier-and-Resizer
+git clone https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor.git
+cd Binary-Photo-Classifier-and-File-Compressor
 pip install -r requirements.txt
 jupyter notebook binary_classifier_photo_sign.ipynb
 ```
@@ -288,20 +288,20 @@ jupyter notebook binary_classifier_photo_sign.ipynb
 ### Try the Algorithm
 The complete implementation with examples is available in the repository:
 
-**Main Implementation**: [binary_classifier_photo_sign.ipynb](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/binary_classifier_photo_sign.ipynb)
+**Main Implementation**: [binary_classifier_photo_sign.ipynb](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/binary_classifier_photo_sign.ipynb)
 
-**Repository Structure**: [View on GitHub](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer)
+**Repository Structure**: [View on GitHub](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor)
 
 ---
 
 ## Repository Links Summary
 
-- **Main Repository**: https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer
-- **Complete Implementation**: [binary_classifier_photo_sign.ipynb](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/binary_classifier_photo_sign.ipynb)
-- **Dataset**: [Dataset folder](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/tree/main/Dataset)
-- **Dependencies**: [requirements.txt](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/requirements.txt)
-- **Visual Results**: [Assets folder](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/tree/main/assets)
-- **Contributing**: [CONTRIBUTING.md](https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer/blob/main/CONTRIBUTING.md)
+- **Main Repository**: https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor
+- **Complete Implementation**: [binary_classifier_photo_sign.ipynb](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/binary_classifier_photo_sign.ipynb)
+- **Dataset**: [Dataset folder](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/tree/main/Dataset)
+- **Dependencies**: [requirements.txt](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/requirements.txt)
+- **Visual Results**: [Assets folder](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/tree/main/assets)
+- **Contributing**: [CONTRIBUTING.md](https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor/blob/main/CONTRIBUTING.md)
 
 ## SEO Keywords Integration
 
