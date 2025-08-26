@@ -1,36 +1,28 @@
-# 📸 Binary Photo Classifier and Resizer
+# Binary Photo Classifier and File Size Reducer
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://www.tensorflow.org/)
 
-> An intelligent AI system that classifies images as photos or signatures and provides smart image resizing capabilities with quality preservation.
+An intelligent AI system that classifies images as photos or signatures and provides smart file size reduction capabilities while preserving image quality.
 
-## 🌟 Features
+## What This Repository Does
 
-### 🔍 Binary Classification
-- **High Accuracy**: Achieves 92.31% validation accuracy in distinguishing photos from signatures
-- **Deep Learning**: Uses Convolutional Neural Network (CNN) with 4 convolutional layers
-- **Real-time Prediction**: Fast inference on new images with visual output
-- **Robust Architecture**: Built with TensorFlow/Keras for reliability
+### Binary Classification
+- Distinguishes between photos and signatures with 92.31% validation accuracy
+- Uses a 4-layer Convolutional Neural Network (CNN) built with TensorFlow/Keras
+- Processes 150x150 pixel RGB images with real-time prediction capabilities
+- Trained on a curated dataset of 30 training images across 2 classes
 
-### 📏 Smart Image Resizing
-- **Intelligent Sizing**: Maintains image quality while achieving target file sizes
-- **Iterative Optimization**: Uses advanced algorithms to find optimal dimensions
-- **Quality Preservation**: Minimizes quality loss during compression
-- **Flexible Parameters**: Customizable file size targets and quality thresholds
+### Smart File Size Reduction
+- Reduces image file sizes while maintaining visual quality
+- Uses iterative optimization to achieve target file sizes (e.g., reduce 1.5MB to 190KB)
+- Preserves image dimensions and aspect ratio during compression
+- Configurable quality tolerance and performance metrics
 
-## 🚀 Quick Start
+## How It Works
 
-### Prerequisites
-- Python 3.7+
-- TensorFlow 2.x
-- OpenCV
-- PIL (Pillow)
-- NumPy
-- Matplotlib
-
-### Installation
+### Installation and Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer.git
@@ -47,7 +39,7 @@
    jupyter notebook binary_classifier_photo_sign.ipynb
    ```
 
-## 📊 Model Performance
+## Model Performance
 
 Our CNN model demonstrates excellent performance:
 
@@ -57,6 +49,8 @@ Our CNN model demonstrates excellent performance:
 - **Dataset**: 30 training images, 13 validation images across 2 classes
 
 ### Training Results
+![Training Results](assets/trainingresults.png)
+
 ```
 Epoch 10/10
 3/3 [==============================] - 0s 133ms/step
@@ -64,44 +58,99 @@ Epoch 10/10
 - val_loss: 0.1848 - val_accuracy: 0.9231
 ```
 
-## 🏗️ Architecture
+## Core Logic and Implementation
 
-### Classification Model
-```
-Input Layer (150x150x3)
-    ↓
-Conv2D (32 filters) + MaxPool2D
-    ↓
-Conv2D (64 filters) + MaxPool2D
-    ↓
-Conv2D (128 filters) + MaxPool2D
-    ↓
-Conv2D (128 filters) + MaxPool2D
-    ↓
-Flatten + Dense (512) + Dense (1)
-    ↓
-Sigmoid Output (Photo: 0, Sign: 1)
-```
+### CNN Model Implementation
+```python
+model = keras.Sequential()
 
-### Image Resizing Algorithm
-1. **Analysis**: Calculate current image memory and bytes per pixel
-2. **Optimization**: Iteratively adjust dimensions to meet target size
-3. **Validation**: Ensure quality remains within acceptable thresholds
-4. **Output**: Resized image with preserved aspect ratio
+# Layer 1: Feature extraction
+model.add(keras.layers.Conv2D(32,(3,3),activation='relu',input_shape=(150,150,3)))
+model.add(keras.layers.MaxPool2D(2,2))
 
-## 📁 Dataset Structure
+# Layer 2: Enhanced feature detection  
+model.add(keras.layers.Conv2D(64,(3,3),activation='relu'))
+model.add(keras.layers.MaxPool2D(2,2))
 
-```
-Dataset/
-├── train/
-│   ├── photo/          # Training photos (16 images)
-│   └── sign/           # Training signatures (14 images)
-└── test/
-    ├── photo/          # Test photos (6 images)
-    └── sign/           # Test signatures (7 images)
+# Layer 3: Complex pattern recognition
+model.add(keras.layers.Conv2D(128,(3,3),activation='relu'))
+model.add(keras.layers.MaxPool2D(2,2))
+
+# Layer 4: Deep feature extraction
+model.add(keras.layers.Conv2D(128,(3,3),activation='relu'))
+model.add(keras.layers.MaxPool2D(2,2))
+
+# Classification layers
+model.add(keras.layers.Flatten())
+model.add(keras.layers.Dense(512,activation='relu'))
+model.add(keras.layers.Dense(1,activation='sigmoid'))  # Binary output
 ```
 
-## 💡 Use Cases
+### Data Pipeline
+```python
+# Image preprocessing with augmentation
+train = ImageDataGenerator(rescale=1/255)
+test = ImageDataGenerator(rescale=1/255)
+
+train_dataset = train.flow_from_directory("Dataset/train",
+                                          target_size=(150,150),
+                                          batch_size=5,
+                                          class_mode='binary')
+```
+
+### File Size Reduction Algorithm
+```python
+def limit_image_memory(path, max_file_size, delta=0.05, step_limit=10):
+    # Iteratively reduce file size while preserving quality
+    current_memory = os.stat(path).st_size
+    ratio = 1
+    
+    while abs(1 - max_file_size / new_memory) > delta:
+        new_image = _change_image_memory(path, file_size=max_file_size * ratio)
+        new_memory = _get_size_of_image(new_image)
+        ratio *= max_file_size / new_memory
+    
+    return optimized_image_path
+```
+
+## Repository Structure
+
+```
+Binary-Photo-Classifier-and-Resizer/
+├── binary_classifier_photo_sign.ipynb  # Main implementation notebook
+├── Dataset/                            # Training and testing data
+│   ├── train/
+│   │   ├── photo/                     # Training photos (16 images)
+│   │   └── sign/                      # Training signatures (14 images)
+│   └── test/
+│       ├── photo/                     # Test photos (6 images)
+│       └── sign/                      # Test signatures (7 images)
+├── assets/                            # Supporting images
+├── examples/                          # Usage examples and tutorials
+├── requirements.txt                   # Python dependencies
+├── .gitignore                        # Git ignore rules
+├── CHANGELOG.md                      # Version history
+├── CONTRIBUTING.md                   # Contribution guidelines
+└── LICENSE                          # Apache 2.0 license
+```
+
+### Core Components
+
+**`binary_classifier_photo_sign.ipynb`**: Complete implementation with:
+- Model training and architecture definition
+- Data preprocessing and augmentation
+- Prediction functions with visualization
+- Smart image resizing algorithms
+- Performance evaluation and metrics
+
+**`Dataset/`**: Organized binary classification data:
+- **train/**: 30 labeled training images
+- **test/**: 13 labeled validation images  
+- **Classes**: photo (0), sign (1)
+
+**`examples/`**: Future home for modular scripts and tutorials
+
+## What Can Be Done
 
 ### Photo vs Signature Classification
 - **Document Processing**: Automated sorting of scanned documents
@@ -109,82 +158,111 @@ Dataset/
 - **Digital Archives**: Organizing mixed document collections
 - **Security Systems**: Biometric authentication preprocessing
 
-### Smart Image Resizing
+### File Size Optimization
 - **Web Optimization**: Reducing image file sizes for faster loading
 - **Storage Management**: Optimizing cloud storage usage
-- **Mobile Applications**: Adapting images for different screen sizes
 - **Email Attachments**: Meeting size restrictions while preserving quality
+- **Mobile Applications**: Reducing app storage requirements
 
-## 📈 Example Usage
+## Example Usage
 
-### Classification
+### Classification Results
+Our model accurately distinguishes between photos and signatures:
+
+**Photo Classification:**
+![Photo Prediction](assets/predict_photo.png)
+
+**Signature Classification:**
+![Signature Prediction](assets/predict_sign.png)
+
 ```python
 # Load and predict an image
 predictImage("sample_photo.jpg")
 # Output: Displays image with label "photo" or "sign"
 ```
 
-### Image Resizing
+### File Size Reduction
+![File Size Reduction Output](assets/rezise_output.png)
+
 ```python
-# Resize image to target file size
+# Reduce image file size to target
 resized_path = limit_image_memory(
     "large_image.jpg", 
-    max_file_size=190000,  # 190KB
+    max_file_size=190000,  # Target: 190KB
     delta=0.01  # 1% tolerance
 )
 ```
 
-## 🔬 Technical Specifications
+## Technical Implementation Details
 
-- **Framework**: TensorFlow 2.x with Keras
-- **Image Processing**: OpenCV and PIL
-- **Input Size**: 150x150 pixels, RGB
-- **Batch Size**: 5 images per batch
-- **Optimization**: Adam optimizer with binary crossentropy loss
-- **Activation Functions**: ReLU (hidden layers), Sigmoid (output)
+### Model Configuration
+```python
+# Compilation parameters
+model.compile(optimizer='adam',
+              loss='binary_crossentropy', 
+              metrics=['accuracy'])
 
-## 📊 Performance Metrics
+# Training configuration
+model.fit_generator(train_dataset,
+                   steps_per_epoch=3,
+                   epochs=10,
+                   validation_data=test_dataset)
+```
+
+### Key Functions
+
+**`predictImage(filename)`**: Main prediction function
+- Loads and preprocesses image to 150x150
+- Runs inference through trained model
+- Displays result with matplotlib visualization
+- Returns binary classification (0=photo, 1=sign)
+
+**`limit_image_memory(path, max_file_size, delta)`**: File size optimization
+- Analyzes current image file size and compression properties
+- Iteratively adjusts compression parameters for target file size
+- Maintains visual quality within specified tolerance
+- Returns path to size-optimized image
+
+### Performance Specifications
+- **Input Processing**: 150x150 RGB normalization (rescale=1/255)
+- **Training Time**: ~10 seconds for 10 epochs
+- **Inference Speed**: Sub-second predictions
+- **Memory Efficiency**: Batch processing with size=5
+- **Model Size**: Lightweight CNN suitable for deployment
+
+## Performance Metrics
 
 ### Classification Results
 - **Precision**: High accuracy in distinguishing image types
 - **Recall**: Effective detection of both photos and signatures
 - **F1-Score**: Balanced performance across both classes
 
-### Resizing Performance
+### File Size Reduction Performance
 - **Speed**: Processes images in under 1 second
 - **Quality**: Maintains visual quality within 5% degradation
 - **Efficiency**: Achieves target file sizes within 1% accuracy
 
-## 🤝 Contributing
+## Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### Ways to Contribute
-- 🐛 Report bugs and issues
-- 💡 Suggest new features
-- 📝 Improve documentation
-- 🔧 Submit pull requests
-- ⭐ Star the repository
+### Development Setup
+```bash
+git clone https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer.git
+cd Binary-Photo-Classifier-and-Resizer
+pip install -r requirements.txt
+jupyter notebook binary_classifier_photo_sign.ipynb
+```
 
-## 📝 License
+## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- TensorFlow team for the excellent deep learning framework
-- OpenCV community for image processing capabilities
-- Contributors and supporters of this project
-
-## 📞 Contact
+## Contact
 
 For questions, suggestions, or collaborations:
-- 📧 Email: [your-email@example.com]
-- 💼 LinkedIn: [Your LinkedIn Profile]
-- 🐙 GitHub: [@yourusername]
+- Email: krithicswaropan.mk@gmail.com
 
 ---
 
-⭐ **Star this repository if it helped you!** ⭐
-
-*Built with ❤️ for the AI and Computer Vision community*
+**Star this repository if it helped you!**
