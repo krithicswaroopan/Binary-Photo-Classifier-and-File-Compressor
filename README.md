@@ -25,8 +25,8 @@ An intelligent AI system that classifies images as photos or signatures and prov
 ### Installation and Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/Binary-Photo-Classifier-and-Resizer.git
-   cd Binary-Photo-Classifier-and-Resizer
+   git clone https://github.com/krithicswaroopan/Binary-Photo-Classifier-and-File-Compressor.git
+   cd Binary-Photo-Classifier-and-File-Compressor
    ```
 
 2. Install dependencies:
