@@ -8,6 +8,7 @@ This directory will contain practical examples and usage scripts for the Binary 
 - **basic_classification.py**: Simple image classification script
 - **batch_classification.py**: Process multiple images at once
 - **real_time_classification.py**: Live camera classification
+- **visualize_cnn_architecture.py**: Generate CNN architecture visualizations
 
 ### 🔧 Image Processing Examples
 - **image_resizing.py**: Standalone image resizing utility

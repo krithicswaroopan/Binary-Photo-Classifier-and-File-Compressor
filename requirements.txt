@@ -19,3 +19,6 @@ notebook>=6.4.0
 
 # Optional: For better performance
 h5py>=3.1.0
+
+# Architecture Visualization
+visualkeras>=0.0.2
